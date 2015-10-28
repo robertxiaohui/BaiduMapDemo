@@ -22,6 +22,7 @@
         android:id="@+id/et_sign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_marginTop="20dp"
         android:text="签名"/>
 
@@ -31,6 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="GotoMap"/>
+
+    <Button
+        android:id="@+id/bt_poi_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="PoiSearch"/>
 
 
 

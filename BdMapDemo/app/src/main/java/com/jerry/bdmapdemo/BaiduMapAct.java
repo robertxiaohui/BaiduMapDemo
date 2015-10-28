@@ -23,6 +23,11 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.LatLngBounds;
+import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
+import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiResult;
+import com.baidu.mapapi.search.poi.PoiSearch;
+import com.baidu.mapapi.search.sug.SuggestionSearch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +35,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/10/26.
  */
-public class BaiduMapAct extends Activity {
+public class BaiduMapAct extends Activity implements OnGetPoiSearchResultListener {
     private MapView mMapView = null;
     private BaiduMap mBaiduMap;
     private String TAG = "BaiduMapAct";
@@ -43,6 +48,12 @@ public class BaiduMapAct extends Activity {
     private List<CoordBean> mListB;
     private List<CoordBean> mListC;
     private List<CoordBean> mListD;
+
+
+
+    private PoiSearch mPoiSearch = null;
+    private SuggestionSearch mSuggestionSearch = null;
+    private List<String> suggest;
 
 
     @Override
@@ -383,4 +394,13 @@ public class BaiduMapAct extends Activity {
         }
     }
 
+    @Override
+    public void onGetPoiResult(PoiResult poiResult) {
+
+    }
+
+    @Override
+    public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
+
+    }
 }

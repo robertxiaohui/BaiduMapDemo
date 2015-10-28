@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -21,6 +20,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private EditText mETSign;
     private Button mBTGetSign;
     private Button mETGotoMap;
+    private Button mBTPoiSearch;
+
     private PackageManager manager;
     private PackageInfo packageInfo;
     private Signature[] signatures;
@@ -39,7 +40,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBTGetSign = (Button) findViewById(R.id.bt_get_sign);
         mETGotoMap = (Button) findViewById(R.id.bt_goto_map);
         mETSign = (EditText) findViewById(R.id.et_sign);
+        mBTPoiSearch = (Button) findViewById(R.id.bt_poi_search);
 
+        mBTPoiSearch.setOnClickListener(this);
         mETGotoMap.setOnClickListener(this);
         mBTGetSign.setOnClickListener(this);
     }
@@ -78,6 +81,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             case R.id.bt_goto_map:
                 intent = new Intent(this,BaiduMapAct.class);
+                startActivity(intent);
+                break;
+
+            case R.id.bt_poi_search:
+                intent = new Intent(this,PoiSearchDemo.class);
                 startActivity(intent);
                 break;
         }

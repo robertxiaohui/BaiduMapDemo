@@ -35,6 +35,7 @@
         <activity android:name=".BaiduMapAct"/>
         <activity android:name=".MarkerClusterDemo"/>
         <activity android:name=".ShowStaticMapAct"/>
+        <activity android:name=".PoiSearchDemo"/>
     </application>
 
 </manifest>

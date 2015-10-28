@@ -72,6 +72,7 @@ public abstract class OverlayManager implements OnMarkerClickListener, OnPolylin
 
         for (OverlayOptions option : mOverlayOptionList) {
             mOverlayList.add(mBaiduMap.addOverlay(option));
+//            mBaiduMap.addOverlay(option);
         }
     }
 

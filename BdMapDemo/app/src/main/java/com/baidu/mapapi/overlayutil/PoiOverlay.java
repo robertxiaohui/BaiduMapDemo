@@ -3,12 +3,14 @@ package com.baidu.mapapi.overlayutil;
 import android.os.Bundle;
 
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.search.poi.PoiResult;
+import com.jerry.bdmapdemo.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
  */
 public class PoiOverlay extends OverlayManager {
 
-    private static final int MAX_POI_SIZE = 10;
+    private static final int MAX_POI_SIZE = 50;
 
     private PoiResult mPoiResult = null;
 
@@ -59,8 +61,12 @@ public class PoiOverlay extends OverlayManager {
             bundle.putInt("index", i);
             markerList.add(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.fromAssetWithDpi("Icon_mark"
-                            + markerSize + ".png")).extraInfo(bundle)
+                            + (markerSize < 10 ? markerSize:10) + ".png")).extraInfo(bundle)
                     .position(mPoiResult.getAllPoi().get(i).location));
+           /* markerList.add(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.m0))
+                    .extraInfo(bundle)
+                    .position(mPoiResult.getAllPoi().get(i).location));*/
             
         }
         return markerList;
