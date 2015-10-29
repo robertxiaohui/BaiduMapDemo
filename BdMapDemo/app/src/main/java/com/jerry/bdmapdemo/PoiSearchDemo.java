@@ -14,10 +14,16 @@ import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.SupportMapFragment;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.LatLngBounds;
@@ -114,13 +120,34 @@ public class PoiSearchDemo extends Activity implements
 
         mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
             public void onMapClick(LatLng point) {
-                Toast.makeText(PoiSearchDemo.this, "点击了: " +point.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(PoiSearchDemo.this, "点击了: " + point.toString(), Toast.LENGTH_SHORT).show();
             }
 
             public boolean onMapPoiClick(MapPoi poi) {
+                mBaiduMap.clear();
+              /*  //定义地图初始状态
+                MapStatus mMapStatus = new MapStatus.Builder()
+                        .target(poi.getPosition())
+
+                        .build();
+                //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
+                MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+                //改变地图状态
+                mBaiduMap.setMapStatus(mMapStatusUpdate);*/
+                BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.icon_marka);
+
+                //定义Maker坐标点
+              //  LatLng point = new LatLng(coordBean.getY(), coordBean.getX());
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option = new MarkerOptions().position(poi.getPosition()).icon(bitmap);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option);
+
+                Toast.makeText(PoiSearchDemo.this, "点击了: " + poi.getName().toString() + "  \n坐标: "+poi.getPosition().toString(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
+
     }
 
     @Override
